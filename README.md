@@ -180,7 +180,9 @@ costs) has more revenue upside than acquiring more top-of-funnel traffic.
 
 | Executive KPIs | Funnel Analysis |
 |---|---|
-| ![KPIs](assets/screenshots/kpis.png) | ![Funnel](assets/screenshots/funnel.png) |
+| ![KPIs](<img width="1022" height="107" alt="image" src="https://github.com/user-attachments/assets/a8ebe301-4c23-4b82-baed-c52d70d07a60" />
+) | ![Funnel](<img width="1786" height="790" alt="newplot (1)" src="https://github.com/user-attachments/assets/7533eb7d-567f-46d1-9157-4254a55e18bb" />
+) |
 
 | Channel Performance | Business Insights |
 |---|---|
