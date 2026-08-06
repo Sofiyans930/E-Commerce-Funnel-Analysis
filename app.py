@@ -19,14 +19,15 @@ import streamlit as st
 # PAGE CONFIG
 # ----------------------------------------------------------------------
 st.set_page_config(
-    page_title="E-Commerce Funnel Analysis | Executive Dashboard",
+    page_title="E-Commerce Funnel Analysis Dashboard",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 # ----------------------------------------------------------------------
-# THEME — corporate palette, applied consistently across every chart
+# THEME — same corporate palette as before, unchanged. Only the CSS
+# applied on top of it was expanded for a cleaner, more executive look.
 # ----------------------------------------------------------------------
 COLORS = {
     "primary": "#2563EB",     # blue   - conversion / primary metric
@@ -44,19 +45,85 @@ FUNNEL_COLORS = ["#2563EB", "#4F86F7", "#7CA8FA", "#A9CAFC"]
 st.markdown(f"""
 <style>
     .main {{ background-color: #FFFFFF; }}
+
+    /* ---- Native st.metric cards (still used for segment KPIs) ---- */
     div[data-testid="stMetric"] {{
         background-color: {COLORS['bg_card']};
         border: 1px solid {COLORS['border']};
         border-radius: 10px;
-        padding: 14px 16px 10px 16px;
+        padding: 16px 18px 12px 18px;
+        min-width: 0;
     }}
-    div[data-testid="stMetricLabel"] {{ color: {COLORS['muted']}; }}
-    h1, h2, h3 {{ color: {COLORS['dark']}; font-family: 'Segoe UI', sans-serif; }}
-    .section-divider {{ margin-top: 0.4rem; margin-bottom: 0.8rem; }}
+    div[data-testid="stMetricLabel"] {{ color: {COLORS['muted']}; font-size: 0.85rem; }}
+    div[data-testid="stMetricValue"] {{
+        font-size: clamp(1.1rem, 2.1vw, 1.6rem);
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.25;
+    }}
+
+    /* ---- Typography hierarchy ---- */
+    h1, h2, h3 {{ color: {COLORS['dark']}; font-family: 'Segoe UI', Arial, sans-serif; }}
+    h1 {{ font-size: 2.1rem; font-weight: 700; margin-bottom: 0.15rem; }}
+    h2 {{ font-size: 1.35rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.4rem; }}
+    p, .stCaption {{ font-family: 'Segoe UI', Arial, sans-serif; }}
+
+    .section-divider {{ margin-top: 0.3rem; margin-bottom: 1rem; }}
+    hr {{ margin: 1.4rem 0; border-color: {COLORS['border']}; }}
+
+    /* ---- Custom executive KPI card grid (Total Sessions, Revenue, etc.) ---- */
+    .kpi-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+        margin-bottom: 0.4rem;
+    }}
+    .kpi-card {{
+        background-color: {COLORS['bg_card']};
+        border: 1px solid {COLORS['border']};
+        border-left: 4px solid var(--accent, {COLORS['primary']});
+        border-radius: 10px;
+        padding: 16px 18px;
+        min-width: 0;
+    }}
+    .kpi-label {{
+        color: {COLORS['muted']};
+        font-size: 0.82rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 6px;
+    }}
+    .kpi-value {{
+        color: {COLORS['dark']};
+        font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+        font-weight: 700;
+        line-height: 1.2;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }}
+
+    /* ---- Sidebar spacing ---- */
+    section[data-testid="stSidebar"] .block-container {{ padding-top: 1.2rem; }}
+    section[data-testid="stSidebar"] h3 {{ margin-top: 0.2rem; margin-bottom: 0.3rem; }}
 </style>
 """, unsafe_allow_html=True)
 
 FUNNEL_STAGES = ["Browse", "Add to Cart", "Checkout", "Purchase"]
+
+
+def kpi_card(label: str, value: str, accent: str = None, help_text: str = None) -> str:
+    """Renders one executive KPI card as HTML. Presentation-only helper —
+    does not touch any calculation; it just formats a label/value pair
+    that's computed exactly as before."""
+    accent = accent or COLORS["primary"]
+    title_attr = f' title="{help_text}"' if help_text else ""
+    return (
+        f'<div class="kpi-card" style="--accent:{accent}"{title_attr}>'
+        f'<div class="kpi-label">{label}</div>'
+        f'<div class="kpi-value">{value}</div>'
+        f'</div>'
+    )
 
 
 # ========================================================================
@@ -216,6 +283,9 @@ def compute_business_insights(session_summary, funnel_df, channel_df, device_df,
 # the same Plotly boilerplate five times.
 # ========================================================================
 
+CHART_HEIGHT = 360  # uniform chart height keeps every grid row visually aligned
+
+
 def bar_chart(data: pd.DataFrame, x: str, y: str, color: str, title: str,
               y_suffix: str = "", horizontal: bool = False) -> go.Figure:
     fig = px.bar(
@@ -230,7 +300,8 @@ def bar_chart(data: pd.DataFrame, x: str, y: str, color: str, title: str,
         hovertemplate=f"<b>%{{x}}</b><br>{y}: %{{y:.2f}}{y_suffix}<extra></extra>",
     )
     fig.update_layout(
-        template="plotly_white", margin=dict(t=50, b=10, l=10, r=10),
+        template="plotly_white", height=CHART_HEIGHT,
+        margin=dict(t=44, b=8, l=8, r=8), autosize=True,
         font=dict(family="Segoe UI, Arial", size=13, color=COLORS["dark"]),
         title_font_size=15, showlegend=False,
         xaxis_title="", yaxis_title="",
@@ -248,7 +319,8 @@ def funnel_chart(funnel_df: pd.DataFrame) -> go.Figure:
         hovertemplate="<b>%{y}</b><br>Sessions: %{x}<br>%{percentInitial}<extra></extra>",
     ))
     fig.update_layout(
-        template="plotly_white", margin=dict(t=20, b=10, l=10, r=10),
+        template="plotly_white", height=CHART_HEIGHT,
+        margin=dict(t=16, b=8, l=8, r=8), autosize=True,
         font=dict(family="Segoe UI, Arial", size=13),
     )
     return fig
@@ -261,8 +333,10 @@ def pie_chart(data: pd.DataFrame, names: str, values: str, title: str) -> go.Fig
     )
     fig.update_traces(textinfo="label+percent", hovertemplate="<b>%{label}</b><br>%{value:,.0f}<extra></extra>")
     fig.update_layout(
-        template="plotly_white", margin=dict(t=50, b=10, l=10, r=10),
+        template="plotly_white", height=CHART_HEIGHT,
+        margin=dict(t=44, b=8, l=8, r=8), autosize=True,
         font=dict(family="Segoe UI, Arial", size=13), title_font_size=15,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.25, x=0.5, xanchor="center"),
     )
     return fig
 
@@ -277,14 +351,40 @@ except FileNotFoundError:
     st.stop()
 
 st.sidebar.title("📊 Funnel Dashboard")
-st.sidebar.caption("Executive view — E-Commerce Customer Journey")
+st.sidebar.caption("Executive view — E-Commerce Journey")
 st.sidebar.markdown("---")
-st.sidebar.header("🔎 Filters")
 
-channel_sel = st.sidebar.multiselect("Channel", sorted(df_raw["Channel"].unique()), default=sorted(df_raw["Channel"].unique()))
-device_sel = st.sidebar.multiselect("Device", sorted(df_raw["Device"].unique()), default=sorted(df_raw["Device"].unique()))
-region_sel = st.sidebar.multiselect("Region", sorted(df_raw["Region"].unique()), default=sorted(df_raw["Region"].unique()))
-category_sel = st.sidebar.multiselect("Product Category", sorted(df_raw["Product_Category"].unique()), default=sorted(df_raw["Product_Category"].unique()))
+# Full option lists — used both as multiselect choices and as the
+# "reset" target, so resetting always returns to "everything selected"
+# (the exact same default the dashboard already loads with).
+ALL_CHANNELS = sorted(df_raw["Channel"].unique())
+ALL_DEVICES = sorted(df_raw["Device"].unique())
+ALL_REGIONS = sorted(df_raw["Region"].unique())
+ALL_CATEGORIES = sorted(df_raw["Product_Category"].unique())
+
+for key, options in [
+    ("channel_filter", ALL_CHANNELS), ("device_filter", ALL_DEVICES),
+    ("region_filter", ALL_REGIONS), ("category_filter", ALL_CATEGORIES),
+]:
+    if key not in st.session_state:
+        st.session_state[key] = options
+
+st.sidebar.subheader("🔎 Filters")
+
+with st.sidebar.container():
+    channel_sel = st.multiselect("Channel", ALL_CHANNELS, key="channel_filter")
+    device_sel = st.multiselect("Device", ALL_DEVICES, key="device_filter")
+    region_sel = st.multiselect("Region", ALL_REGIONS, key="region_filter")
+    category_sel = st.multiselect("Product Category", ALL_CATEGORIES, key="category_filter")
+
+reset_col, _ = st.sidebar.columns([1, 0.01])
+with reset_col:
+    if st.button("🔄 Reset Filters", use_container_width=True):
+        st.session_state["channel_filter"] = ALL_CHANNELS
+        st.session_state["device_filter"] = ALL_DEVICES
+        st.session_state["region_filter"] = ALL_REGIONS
+        st.session_state["category_filter"] = ALL_CATEGORIES
+        st.rerun()
 
 # Handle missing/empty filter selection gracefully instead of crashing
 if not all([channel_sel, device_sel, region_sel, category_sel]):
@@ -329,19 +429,28 @@ insights = compute_business_insights(session_summary, funnel_df, channel_df, dev
 # ========================================================================
 # HEADER + EXECUTIVE KPI CARDS
 # ========================================================================
-st.title("🛒 E-Commerce Customer Funnel Analysis")
+st.title("🛒 E-Commerce Funnel Analysis Dashboard")
 st.caption("Executive Dashboard · Browse → Add to Cart → Checkout → Purchase")
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 purchase_rate = funnel_df.loc[funnel_df["Stage"] == "Purchase", "Drop_Off_Rate (%)"].values[0]
+aov_display = f"${revenue['average_order_value']:,.2f}" if revenue['total_orders'] else "$0.00"
 
-k1, k2, k3, k4, k5, k6 = st.columns(6)
-k1.metric("Total Sessions", f"{insights['total_sessions']:,}")
-k2.metric("Total Orders", f"{int(revenue['total_orders']):,}")
-k3.metric("Total Revenue", f"${revenue['total_revenue']:,.0f}")
-k4.metric("Conversion Rate", f"{insights['conversion_rate']:.2f}%")
-k5.metric("Avg Order Value", f"${revenue['average_order_value']:,.2f}" if revenue['total_orders'] else "$0.00")
-k6.metric("Purchase Rate", f"{purchase_rate:.2f}%", help="Checkout → Purchase efficiency")
+# Custom KPI grid (see kpi_card()) instead of st.columns(6) + st.metric —
+# same six values, computed exactly as before, just laid out in a
+# responsive CSS grid so cards get wider on large screens and wrap
+# cleanly on narrow ones instead of truncating long numbers.
+st.markdown(
+    '<div class="kpi-grid">'
+    + kpi_card("Total Sessions", f"{insights['total_sessions']:,}", COLORS["primary"])
+    + kpi_card("Total Orders", f"{int(revenue['total_orders']):,}", COLORS["primary"])
+    + kpi_card("Total Revenue", f"${revenue['total_revenue']:,.0f}", COLORS["success"])
+    + kpi_card("Conversion Rate", f"{insights['conversion_rate']:.2f}%", COLORS["secondary"])
+    + kpi_card("Avg Order Value", aov_display, COLORS["success"])
+    + kpi_card("Purchase Rate", f"{purchase_rate:.2f}%", COLORS["warning"], "Checkout → Purchase efficiency")
+    + "</div>",
+    unsafe_allow_html=True,
+)
 
 st.markdown("---")
 
@@ -383,10 +492,15 @@ def render_segment_section(title: str, seg_df: pd.DataFrame, label_col: str):
         return
 
     top = seg_df.loc[seg_df["Conversion_Rate"].idxmax()]
-    m1, m2, m3 = st.columns(3)
-    m1.metric(f"Top {label_col.replace('_', ' ')}", top[label_col])
-    m2.metric("Its Conversion Rate", f"{top['Conversion_Rate']:.2f}%")
-    m3.metric("Its Revenue", f"${top['Total_Revenue']:,.0f}")
+    st.markdown(
+        '<div class="kpi-grid">'
+        + kpi_card(f"Top {label_col.replace('_', ' ')}", str(top[label_col]), COLORS["primary"])
+        + kpi_card("Its Conversion Rate", f"{top['Conversion_Rate']:.2f}%", COLORS["secondary"])
+        + kpi_card("Its Revenue", f"${top['Total_Revenue']:,.0f}", COLORS["success"])
+        + "</div>",
+        unsafe_allow_html=True,
+    )
+    st.markdown("<div style='margin-top:0.6rem'></div>", unsafe_allow_html=True)
 
     c1, c2 = st.columns(2)
     with c1:
@@ -458,7 +572,7 @@ recs = [
     ("5️⃣ Promote Best-Selling Product Categories",
      [f"Increase visibility and promotions for {insights['best_category']}.",
       "Bundle popular products with complementary items to increase sales."]),
-    ("6️⃣ Improve Customer Conversion",
+    ("6️⃣ Improve Conversion",
      ["Reduce friction throughout the purchase journey.",
       "Improve website performance and page loading speed.",
       "Use personalized offers and remarketing campaigns to recover abandoned carts."]),
