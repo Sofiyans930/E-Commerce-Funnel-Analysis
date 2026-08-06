@@ -180,24 +180,18 @@ costs) has more revenue upside than acquiring more top-of-funnel traffic.
 
 | Executive KPIs | Funnel Analysis |
 |---|---|
-| ![KPIs](<img width="1022" height="107" alt="image" src="https://github.com/user-attachments/assets/a8ebe301-4c23-4b82-baed-c52d70d07a60" />
+| ![KPIs](<img width="1022" height="107" alt="image" src="<img width="498" height="144" alt="image" src="https://github.com/user-attachments/assets/a36d2e98-bdef-482b-adfd-1545f02bd3ef" /> <img width="497" height="112" alt="image" src="https://github.com/user-attachments/assets/403f41a8-c95c-42bb-82f1-eddea95fa684" />
+
+
 ) | ![Funnel](<img width="1786" height="790" alt="newplot (1)" src="https://github.com/user-attachments/assets/7533eb7d-567f-46d1-9157-4254a55e18bb" />
 ) |
 
 | Channel Performance | Business Insights |
 |---|---|
-| ![Channel](assets/screenshots/channel.png) | ![Insights](assets/screenshots/insights.png) |
+| ![Channel](<img width="1049" height="615" alt="image" src="https://github.com/user-attachments/assets/bd1a8959-7af1-4936-8679-adac97e5ee31" />
+) | ![Insights](<img width="752" height="221" alt="image" src="https://github.com/user-attachments/assets/71674b90-fd24-4cf4-b446-c69191d984b1" />
+) |
 
-## 🚀 Future Improvements
-
-- [ ] Replace simulated data with real clickstream/analytics data
-- [ ] Add a random seed to the data-generation step for reproducibility
-- [ ] Add cohort and retention analysis (do purchasers return?)
-- [ ] A/B test the checkout simplification and measure actual lift
-- [ ] Add automated tests for the core calculation functions
-- [ ] Deploy the dashboard to Streamlit Community Cloud with a public URL
-- [ ] Add date-range filtering to the dashboard sidebar
-- [ ] Containerize with Docker for one-command setup
 
 ## 🤝 AI Assistance
 
