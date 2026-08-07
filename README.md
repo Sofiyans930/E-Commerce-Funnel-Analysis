@@ -170,11 +170,11 @@ https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 
 | Funnel Analysis | Channel Performance |
 |---|---|
-| ![Funnel Analysis](assets/screenshots/funnel_analysis.png) | ![Channel Performance](assets/screenshots/channel_performance.png) |
+| !"C:\Users\DELL LATITUDE 5400\Downloads\funnel_analysis.png" | !"C:\Users\DELL LATITUDE 5400\Downloads\channel_performance.png" |
 
 | Device Performance | Region Performance |
 |---|---|
-| ![Device Performance](assets/screenshots/device_performance.png) | ![Region Performance](assets/screenshots/region_performance.png) |
+| "C:\Users\DELL LATITUDE 5400\Downloads\device_performance.png" | !"C:\Users\DELL LATITUDE 5400\Downloads\region_performance.png" |
 
 ## 🤝 AI Assistance
 
@@ -191,6 +191,7 @@ Parts of this project were built with AI-assisted development:
 - Streamlit frontend development
 - UI improvements
 - Layout improvements
+- Documentation formatting
 
 All analytical decisions, KPI calculations, business insights, dashboard validation, and final implementation were completed and reviewed by the project author. This includes exploratory data analysis (EDA), funnel analysis, revenue analysis, channel/device/region/category analysis, business insights, strategic recommendations, and testing and validation of results.
 
