@@ -170,11 +170,12 @@ https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 
 | Dashboard Overview | Funnel Analysis |
 |---|---|
-| ![Dashboard Overview](assets/screenshots/dashboard_overview.png) | ![Funnel Analysis](assets/screenshots/funnel_analysis.png) |
+| ![Dashboard Overview]() | ![Funnel Analysis](a<img width="572" height="233" alt="image" src="https://github.com/user-attachments/assets/21413401-70cc-4fec-bdd1-4c12b8bf2e11" />
+) |
 
 | Channel Performance | Business Insights |
 |---|---|
-| ![Channel Performance](assets/screenshots/channel_performance.png) | ![Business Insights](assets/screenshots/business_insights.png) |
+| ![Channel Performance]()
 
 ## 🤝 AI Assistance
 
