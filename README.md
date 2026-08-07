@@ -168,46 +168,42 @@ https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 
 ## 📸 Dashboard Screenshots
 
-### Executive Dashboard
-
-![Executive Dashboard](assets/screenshots/dashboard_overview.png)
-
 ---
 
 ### Funnel Analysis
 
-![Funnel Analysis](assets/screenshots/funnel_analysis.png)
+![Funnel Analysis](<img width="1250" height="850" alt="newplot (3)" src="https://github.com/user-attachments/assets/bd1ef979-23e9-4744-b447-54b8965e0066" />
+)
 
 ---
 
 ### Channel Performance
 
-![Channel Performance](assets/screenshots/channel_performance.png)
+![Channel Performance](<img width="822" height="516" alt="image" src="https://github.com/user-attachments/assets/6d0067f9-a312-4d0b-a144-ef438f6ddc30" />
+)
 
 ---
 
 ### Device Performance
 
-![Device Performance](assets/screenshots/device_performance.png)
+![Device Performance](<img width="825" height="509" alt="image" src="https://github.com/user-attachments/assets/335a05f1-7747-402a-ab31-45a68ed0a801" />
+)
 
 ---
 
 ### Region Performance
 
-![Region Performance](assets/screenshots/region_performance.png)
+![Region Performance](<img width="820" height="524" alt="image" src="https://github.com/user-attachments/assets/ed6eb5f0-eb23-4531-a553-cfe9425200cc" />
+)
 
 ---
 
 ### Product Category Performance
 
-![Product Category Performance](assets/screenshots/product_category_performance.png)
+![Product Category Performance](<img width="824" height="513" alt="image" src="https://github.com/user-attachments/assets/8cd089db-54eb-427c-ad10-3c3883760fbb" />
+)
 
----
-
-### Business Insights
-
-![Business Insights](assets/screenshots/business_insights.png)
-
+--
  |
 
 ## 🤝 AI Assistance
