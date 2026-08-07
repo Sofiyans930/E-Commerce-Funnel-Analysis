@@ -177,7 +177,8 @@ https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 | Device Performance | Region Performance |
 |---|---|
 |<img width="645" height="313" alt="image" src="https://github.com/user-attachments/assets/ac6d9028-698e-483f-85be-39d0fac74082" />
- | !<img width="392" height="259" alt="image" src="https://github.com/user-attachments/assets/75f3831c-45da-4fbf-bc9b-157f7fec7036" />
+ | !<img width="380" height="252" alt="image" src="https://github.com/user-attachments/assets/f6b1d9b4-64ee-4ddd-b6c2-9ff6c7c34a68" />
+
  |
 
 ## 🤝 AI Assistance
