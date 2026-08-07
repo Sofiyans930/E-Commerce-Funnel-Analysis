@@ -166,18 +166,47 @@ https://e-commerce-funnel-analysis-ze4ngh33vheqkgexljpoa6.streamlit.app/
 **GitHub Repository:**
 https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 
-## 📸 Screenshots
+## 📸 Dashboard Screenshots
 
-| Funnel Analysis | Channel Performance |
-|---|---|
-| !"<img width="683" height="360" alt="image" src="https://github.com/user-attachments/assets/4b0ada5b-df33-4ff8-9c2a-955fbd9eadb1" />
-" | !<img width="622" height="232" alt="image" src="https://github.com/user-attachments/assets/6a5bfc61-5d2d-4f7a-9186-8d24af69f280" />
- |
+### Executive Dashboard
 
-| Device Performance | Region Performance |
-|---|---|
-|<img width="645" height="313" alt="image" src="https://github.com/user-attachments/assets/ac6d9028-698e-483f-85be-39d0fac74082" />
- | !<img width="380" height="252" alt="image" src="https://github.com/user-attachments/assets/f6b1d9b4-64ee-4ddd-b6c2-9ff6c7c34a68" />
+![Executive Dashboard](assets/screenshots/dashboard_overview.png)
+
+---
+
+### Funnel Analysis
+
+![Funnel Analysis](assets/screenshots/funnel_analysis.png)
+
+---
+
+### Channel Performance
+
+![Channel Performance](assets/screenshots/channel_performance.png)
+
+---
+
+### Device Performance
+
+![Device Performance](assets/screenshots/device_performance.png)
+
+---
+
+### Region Performance
+
+![Region Performance](assets/screenshots/region_performance.png)
+
+---
+
+### Product Category Performance
+
+![Product Category Performance](assets/screenshots/product_category_performance.png)
+
+---
+
+### Business Insights
+
+![Business Insights](assets/screenshots/business_insights.png)
 
  |
 
