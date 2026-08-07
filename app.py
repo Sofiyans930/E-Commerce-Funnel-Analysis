@@ -106,6 +106,23 @@ st.markdown(f"""
     /* ---- Sidebar spacing ---- */
     section[data-testid="stSidebar"] .block-container {{ padding-top: 1.2rem; }}
     section[data-testid="stSidebar"] h3 {{ margin-top: 0.2rem; margin-bottom: 0.3rem; }}
+
+    /* ---- Conclusion info card ---- */
+    .conclusion-card {{
+        background-color: {COLORS['bg_card']};
+        border: 1px solid {COLORS['border']};
+        border-left: 4px solid {COLORS['primary']};
+        border-radius: 10px;
+        padding: 20px 22px;
+        line-height: 1.6;
+        color: {COLORS['dark']};
+    }}
+    .conclusion-card p {{
+        margin-bottom: 12px;
+    }}
+    .conclusion-card p:last-child {{
+        margin-bottom: 0;
+    }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -589,32 +606,24 @@ for title, points in recs:
 st.markdown("---")
 
 # ========================================================================
-# SUGGESTED IMPROVEMENTS — observations only, notebook logic untouched
+# CONCLUSION — business-value summary, displayed as a clean info card
 # ========================================================================
-st.header("🛠️ Suggested Improvements")
-st.caption("Observations on the notebook — nothing here was applied to your analysis.")
-with st.expander("View suggestions"):
-    st.markdown("""
-1. **Column naming:** `Drop_Off_Rate (%)` at each row actually stores the
-   *carry-forward rate* (sessions this stage ÷ sessions previous stage),
-   not a drop-off. A true drop-off would be `100 - carry_forward_rate`.
-   The Purchase-stage KPI card above is labeled "Purchase Rate" for this
-   reason rather than reusing the ambiguous column name directly.
-2. **No random seed** in the data-generation cell — re-running it produces
-   different numbers each time, making results hard to reproduce or compare
-   across sessions.
-3. **`revenue_by_stage` / `duration_by_stage`** (inside the combined
-   dashboard cell) aren't reindexed to the funnel stage order, so if a
-   stage has zero sessions it can be silently missing from the chart
-   instead of showing as zero.
-4. **`df.to_csv("funnel_Analysis_Dataset", index=False)`** (early save cell)
-   is missing the `.csv` extension.
-5. Four analysis cells (channel, device, region, category) repeat the same
-   ~25 lines of logic with only the group-by column changed — a good
-   candidate to factor into one function, as done here in `compute_segment_df()`.
+st.header("📌 Conclusion")
+st.markdown(
+    """
+    <div class="conclusion-card">
+        <p>This E-Commerce Funnel Analysis Dashboard provides a comprehensive view of the
+        customer purchase journey, helping businesses monitor funnel performance, identify
+        conversion bottlenecks, and evaluate revenue across different channels, devices,
+        regions, and product categories.</p>
+        <p>The interactive dashboard enables business stakeholders to make data-driven decisions
+        by tracking key performance indicators (KPIs), analyzing customer behavior, and
+        identifying opportunities to improve conversion rates and overall business performance.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
-None of the above were changed in your notebook — they're listed here as
-optional follow-ups.
-""")
+st.markdown("---")
 
-st.caption("Built with Streamlit · Plotly · Pandas — frontend only, analysis logic unchanged from the source notebook.")
+st.caption("Built using Python, Pandas, Plotly, and Streamlit to deliver an interactive executive dashboard for E-Commerce Funnel Analysis.")
