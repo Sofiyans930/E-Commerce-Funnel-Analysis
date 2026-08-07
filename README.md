@@ -170,11 +170,15 @@ https://github.com/Sofiyans930/E-Commerce-Funnel-Analysis
 
 | Funnel Analysis | Channel Performance |
 |---|---|
-| !"C:\Users\DELL LATITUDE 5400\Downloads\funnel_analysis.png" | !"C:\Users\DELL LATITUDE 5400\Downloads\channel_performance.png" |
+| !"<img width="683" height="360" alt="image" src="https://github.com/user-attachments/assets/4b0ada5b-df33-4ff8-9c2a-955fbd9eadb1" />
+" | !<img width="622" height="232" alt="image" src="https://github.com/user-attachments/assets/6a5bfc61-5d2d-4f7a-9186-8d24af69f280" />
+ |
 
 | Device Performance | Region Performance |
 |---|---|
-| "C:\Users\DELL LATITUDE 5400\Downloads\device_performance.png" | !"C:\Users\DELL LATITUDE 5400\Downloads\region_performance.png" |
+|<img width="645" height="313" alt="image" src="https://github.com/user-attachments/assets/ac6d9028-698e-483f-85be-39d0fac74082" />
+ | !<img width="392" height="259" alt="image" src="https://github.com/user-attachments/assets/75f3831c-45da-4fbf-bc9b-157f7fec7036" />
+ |
 
 ## 🤝 AI Assistance
 
